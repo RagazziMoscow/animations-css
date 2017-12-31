@@ -1,0 +1,118 @@
+:root {
+  /*properties*/
+  --side-length: 400px;
+  --innner-const: 0.85;
+  --text-color: #5891f9;
+  /*properties*/
+
+
+  --innner-height: calc(var(--side-length)*var(--innner-const));
+  --font-size: calc(var(--side-length)*60/400);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.pie {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    max-width: var(--side-length);
+    width: 100%;
+    max-height: var(--side-length);
+    height: 100%;
+    margin: auto;
+
+    border: 5px solid #5891f9;
+    border-radius: 50%;
+}
+.center {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: var(--innner-height);
+    height: var(--innner-height);
+    margin: auto;
+
+    border-radius: 50%;
+
+    background-color: white;
+}
+.center .value {
+    font-family: 'Verdana';
+    font-size: var(--font-size);
+    line-height: var(--innner-height);
+
+    color: var(--text-color);
+
+    text-align: center;
+    cursor: pointer;
+}
+
+.side {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+}
+.side .clear {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #5891f9;
+
+    transition: transform 0.5s ease;
+}
+
+
+
+.left-side {
+    clip: rect(auto,
+               calc(var(--side-length)/2),
+               auto,
+               auto);
+}
+.left-side .clear {
+    clip: rect(auto,
+               auto,
+               auto,
+               calc(var(--side-length)/2));
+    transform: rotate(0deg);
+}
+
+
+
+.right-side {
+    clip: rect(auto,
+               auto,
+               auto,
+               calc(var(--side-length)/2));
+}
+.right-side .clear {
+    clip: rect(auto,
+               calc(var(--side-length)/2),
+               auto,
+               auto);
+    transform: rotate(0deg);
+}

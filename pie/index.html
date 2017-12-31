@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Прогрес бар</title>
+  <link rel="stylesheet" href="pie.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="pie">
+      <div class="center">
+        <p class="value"><span>0</span>%</p>
+      </div>
+      <div class="left-side side">
+        <div class="clear"></div>
+      </div>
+      <div class="right-side side">
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    /*properties*/
+    var step = 3;
+    var interval = 200;
+    /*properties*/
+
+    var percetages = 0;
+    var node = document.querySelector('.value');
+    var leftSide = document.querySelector('.left-side .clear');
+    var rightSide = document.querySelector('.right-side .clear');
+    var degrees = 0;
+    var leftSideDegrees = 0;
+    var looper = setInterval( () => {
+
+      percetages += step;
+      degrees = (percetages * 360) / 100;
+      leftSideDegrees = degrees - 180;
+
+      if (percetages > 100) percetages = 100;
+      if (degrees > 180) degrees = 180;
+      
+      if (leftSideDegrees < 0) leftSideDegrees = 0;
+      if (leftSideDegrees > 180) leftSideDegrees = 180;
+
+      rightSide.style.transform = 'rotate(' + degrees + 'deg)';
+      leftSide.style.transform = 'rotate(' + leftSideDegrees + 'deg)';      
+      node.textContent = (percetages + '%');
+
+      if (percetages >= 100)
+      {
+        clearInterval(looper);
+      }
+    }, interval);
+
+  </script>
+</body>
+</html>
