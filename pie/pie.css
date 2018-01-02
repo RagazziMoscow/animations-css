@@ -1,6 +1,6 @@
 :root {
   /*properties*/
-  --side-length: 400px;
+  --side-length: 600px;
   --innner-const: 0.85;
   --text-color: #5891f9;
   /*properties*/
@@ -71,8 +71,9 @@
 .side {
     position: absolute;
 
-    width: 100%;
+    width: 50%;
     height: 100%;
+    overflow: hidden;
 }
 .side .clear {
     position: absolute;
@@ -88,31 +89,18 @@
 
 
 .left-side {
-    clip: rect(auto,
-               calc(var(--side-length)/2),
-               auto,
-               auto);
+  left: 0;
 }
-.left-side .clear {
-    clip: rect(auto,
-               auto,
-               auto,
-               calc(var(--side-length)/2));
-    transform: rotate(0deg);
-}
-
-
-
 .right-side {
-    clip: rect(auto,
-               auto,
-               auto,
-               calc(var(--side-length)/2));
+  right: 0;
+}
+
+
+.left-side .clear {
+  transform-origin: center right;
+  transform: rotateZ(0deg) translateX(calc(var(--side-length)/2));
 }
 .right-side .clear {
-    clip: rect(auto,
-               calc(var(--side-length)/2),
-               auto,
-               auto);
-    transform: rotate(0deg);
+  transform-origin: center left;
+  transform: rotateZ(0deg) translateX(calc(var(--side-length)/2*-1));
 }

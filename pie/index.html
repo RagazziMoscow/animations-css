@@ -25,6 +25,7 @@
     var interval = 200;
     /*properties*/
 
+    
     var percetages = 0;
     var node = document.querySelector('.value');
     var leftSide = document.querySelector('.left-side .clear');
@@ -43,8 +44,12 @@
       if (leftSideDegrees < 0) leftSideDegrees = 0;
       if (leftSideDegrees > 180) leftSideDegrees = 180;
 
-      rightSide.style.transform = 'rotate(' + degrees + 'deg)';
-      leftSide.style.transform = 'rotate(' + leftSideDegrees + 'deg)';      
+      rightSide.style.transform = 'rotateZ(' +
+                                  degrees +
+                                  'deg) translateX(calc(var(--side-length)/2*-1))';
+      leftSide.style.transform = 'rotateZ(' +
+                                  leftSideDegrees +
+                                  'deg) translateX(calc(var(--side-length)/2))';      
       node.textContent = (percetages + '%');
 
       if (percetages >= 100)
@@ -52,6 +57,7 @@
         clearInterval(looper);
       }
     }, interval);
+
 
   </script>
 </body>
